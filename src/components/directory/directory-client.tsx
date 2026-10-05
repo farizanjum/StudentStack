@@ -136,7 +136,8 @@ export function DirectoryClient({
     () =>
       new Fuse(resources, {
         keys: ["name", "tagline", "description", "tags"],
-        threshold: 0.35,
+        threshold: 0.4,
+        ignoreLocation: true,
       }),
     [resources],
   );
@@ -404,6 +405,7 @@ export function DirectoryClient({
         open={filterSheetOpen}
         onOpenChange={setFilterSheetOpen}
         resultCount={filtered.length}
+        onClearAll={clearAll}
         search={search}
         onSearchChange={(v) => {
           setSearch(v);
